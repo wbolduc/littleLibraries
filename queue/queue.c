@@ -4,7 +4,7 @@
 #include <queue.h>
 
 
-void swap(queue_item_t * heap, int a, int b)
+inline void swap(queue_item_t * heap, int a, int b)
 {
     temp_v temp;
 
@@ -88,7 +88,6 @@ queue_t *addToQueue(void* data, int priority, queue_t *queue)
 {
     int child;
     int parent;
-    temp_v temp;
     queue_item_t* heap;// = queue->heap;
 
     if (queue->itemCount + 1 > queue->heapSize)
@@ -120,14 +119,7 @@ queue_t *addToQueue(void* data, int priority, queue_t *queue)
 
         if(heap[parent].priority > heap[child].priority)
         {
-            temp.integer = heap[parent].priority;
-            heap[parent].priority = heap[child].priority;
-            heap[child].priority = temp.integer;
-
-            temp.voidPointer = heap[parent].data;
-            heap[parent].data = heap[child].data;
-            heap[child].data = temp.voidPointer;
-
+            swap(heap, parent, child);
             child = parent;
         }
         else

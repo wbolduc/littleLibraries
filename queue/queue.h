@@ -28,7 +28,7 @@ typedef union _temp_v{
 void *pop(queue_t* queue);
 
 //Utility for swapping items in an array of queue_item_t (heap)
-void swap(queue_item_t * heap, int a, int b);
+inline void swap(queue_item_t * heap, int a, int b);
 
 //add to priority queue, returns the same queue on success
 queue_t *addToQueue(void* data, int priority, queue_t* queue);
